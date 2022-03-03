@@ -31,6 +31,14 @@ class Movie(Media):
     def __str__(self):
         return f"{self.name} ({self._year}) length:{self._length} min likes:{self._likes}"
 
+class Playlist(list):
+    def __init__(self, name, list):
+        super().__init__(list)
+        self.__name = name
+
+    @property
+    def name(self):
+        return self.__name
 
 avengers = Movie("Avengers", 2019, 180)
 seinfeld = Series("seinfeld", 1991, 9)
@@ -47,12 +55,18 @@ avengers.like()
 avengers.like()
 
 seinfeld.like()
-avengers.like()
-avengers.like()
-avengers.like()
-avengers.like()
+seinfeld.like()
+seinfeld.like()
+seinfeld.like()
+seinfeld.like()
 
 play_list = [avengers, seinfeld]
 
 for media in play_list:
+    print(media)
+
+playlist = Playlist("MyFlix", play_list)
+
+print(f"{playlist.name} has {len(playlist)} medias")
+for media in playlist:
     print(media)
