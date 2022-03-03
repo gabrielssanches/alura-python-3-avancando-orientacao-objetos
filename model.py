@@ -31,14 +31,20 @@ class Movie(Media):
     def __str__(self):
         return f"{self.name} ({self._year}) length:{self._length} min likes:{self._likes}"
 
-class Playlist(list):
+class Playlist():
     def __init__(self, name, list):
-        super().__init__(list)
         self.__name = name
+        self.__list = list
 
     @property
     def name(self):
         return self.__name
+
+    def __getitem__(self, item):
+        return self.__list[item]
+
+    def __len__(self):
+        return len(self.__list)
 
 avengers = Movie("Avengers", 2019, 180)
 seinfeld = Series("seinfeld", 1991, 9)
